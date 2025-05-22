@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora Pico - Metro CDMX</title>
+    <link rel="stylesheet" href="adicionales.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+</head>
+<script>
+    function actualizarFechaHora() {
+        const ahora = new Date();
+        const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+        const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const fecha = ahora.toLocaleDateString('es-MX', opcionesFecha);
+        const hora = ahora.toLocaleTimeString('es-MX', opcionesHora);
+        document.getElementById('fechaHora').textContent = `${fecha} | ${hora}`;
+    }
+
+    setInterval(actualizarFechaHora, 1000);
+    actualizarFechaHora();
+</script>
+
+<body>
+
+    <div class="top-bar">
+        <div class="left-text">MetroCDMX</div>
+        <div class="right-text" id="fechaHora"></div>
+    </div>
+    <hr class="divider">
+
+
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo-background"></div>
+                    <img src="logo_metro.png" alt="Logo Metro CDMX" class="logo">
+                </div>
+                <div class="title-container">
+                    <div class="title-bg"></div>
+                    <h1 class="main-title">Hora Pico</h1>
+                </div>
+            </div>
+            <p class="subtitle">¿Qué tan lleno está el metro hoy?</p>
+        </header>
+
+        <section class="main-content">
+            <div class="instructions">
+                <div class="center-content">
+                     <p class="instruction-text">
+                        ¿Quieres saber qué tan lleno estará el metro antes de salir de casa? 
+                        Con nuestra herramienta puedes anticiparte y planear mejor tu viaje.
+                    </p>
+                    <img src="mexicometrodibujo.jpg" alt="Metro dibujo" class="instruction-image">
+                    <div class="steps-container">
+                        <p class="steps-text">
+                            <strong>Solo tienes que seguir estos simples pasos:</strong>
+                            <br><br>
+                            1. Elige la estación que deseas consultar.<br>
+                            2. Selecciona la fecha en la que planeas viajar.<br>
+                            3. (Opcional) Marca si está lloviendo, ya que la afluencia puede variar con el clima.
+                            <br><br>
+                            Con esta información, te mostraremos una estimación del nivel de ocupación del metro para que viajes con mayor comodidad y evites aglomeraciones.
+                        </p>
+                </div>
+                </div>
+            </div>
+            <form id="formularioAfluencia">
+                <div class="data-section">
+                    <div class="form-group">
+                        <label>Estaciones</label>
+                        <select id="estaciones" name="estacion" required>
+                            <option value="">Selecciona una estación</option>
+                            <option value="acatitla">Acatitla</option>
+                            <option value="aculco">Aculco</option>
+                            <option value="agricola_oriental">Agrícola Oriental</option>
+                            <option value="allende">Allende</option>
+                            <option value="apatlaco">Apatlaco</option>
+                            <option value="aquiles_serdan">Aquiles Serdán</option>
+                            <option value="aragon">Aragón</option>
+                            <option value="atlalilco">Atlalilco</option>
+                            <option value="auditorio">Auditorio</option>
+                            <option value="autobuses_del_norte">Autobuses del Norte</option>
+                            <option value="balbuena">Balbuena</option>
+                            <option value="balderas">Balderas</option>
+                            <option value="barranca_del_muerto">Barranca del Muerto</option>
+                            <option value="bellas_artes">Bellas Artes</option>
+                            <option value="bondojito">Bondojito</option>
+                            <option value="boulevard_puerto_aereo">Boulevard Puerto Aéreo</option>
+                            <option value="bosque_de_aragon">Bosque de Aragón</option>
+                            <option value="buenavista">Buenavista</option>
+                            <option value="calle_11">Calle 11</option>
+                            <option value="camarones">Camarones</option>
+                            <option value="canal_de_san_juan">Canal de San Juan</option>
+                            <option value="canal_del_norte">Canal del Norte</option>
+                            <option value="candelaria">Candelaria</option>
+                            <option value="centro_medico">Centro Médico</option>
+                            <option value="cerro_de_la_estrella">Cerro de la Estrella</option>
+                            <option value="chabacano">Chabacano</option>
+                            <option value="chapultepec">Chapultepec</option>
+                            <option value="chilpancingo">Chilpancingo</option>
+                            <option value="ciudad_azteca">Ciudad Azteca</option>
+                            <option value="ciudad_deportiva">Ciudad Deportiva</option>
+                            <option value="colegio_militar">Colegio Militar</option>
+                            <option value="constitución_de_1917">Constitución de 1917</option>
+                            <option value="constituyentes">Constituyentes</option>
+                            <option value="consulado">Consulado</option>
+                            <option value="copilco">Copilco</option>
+                            <option value="coyoa">Coyoa</option>
+                            <option value="coyoacan">Coyoacán</option>
+                            <option value="cuatro_caminos">Cuatro Caminos</option>
+                            <option value="cuauhtemoc">Cuauhtémoc</option>
+                            <option value="culhuacan">Culhuacán</option>
+                            <option value="deportivo_18_de_marzo">Deportivo 18 de Marzo</option>
+                            <option value="deportivo_oceania">Deportivo Oceanía</option>
+                            <option value="division_del_norte">División del Norte</option>
+                            <option value="doctores">Doctores</option>
+                            <option value="eduardo_molina">Eduardo Molina</option>
+                            <option value="eje_central">Eje Central</option>
+                            <option value="ermita">Ermita</option>
+                            <option value="escudron_201">Escuadrón 201</option>
+                            <option value="etiopia">Etiopía/Plaza de la Transparencia</option>
+                            <option value="eugenia">Eugenia</option>
+                            <option value="ferreria_aerea">Ferrería - Aérea Ciudad de México</option>
+                            <option value="fray_servando">Fray Servando</option>
+                            <option value="garibaldi">Garibaldi/Lagunilla</option>
+                            <option value="general_anaya">General Anaya</option>
+                            <option value="gomez_farias">Gómez Farías</option>
+                            <option value="guelatao">Guelatao</option>
+                            <option value="hangares">Hangares</option>
+                            <option value="hidalgo">Hidalgo</option>
+                            <option value="hospital_20_de_noviembre">Hospital 20 de Noviembre</option>
+                            <option value="hospital_general">Hospital General</option>
+                            <option value="impulsora">Impulsora</option>
+                            <option value="indios_verdes">Indios Verdes</option>
+                            <option value="insurgentes">Insurgentes</option>
+                            <option value="insurgentes_sur">Insurgentes Sur</option>
+                            <option value="instituto_del_petroleo">Instituto del Petróleo</option>
+                            <option value="isabel_la_catolica">Isabel la Católica</option>
+                            <option value="iztacalco">Iztacalco</option>
+                            <option value="iztapalapa">Iztapalapa</option>
+                            <option value="jamaica">Jamaica</option>
+                            <option value="juanacatlan">Juanacatlán</option>
+                            <option value="juarez">Juárez</option>
+                            <option value="la_paz">La Paz</option>
+                            <option value="la_raza">La Raza</option>
+                            <option value="la_viga">La Viga</option>
+                            <option value="la_villa">La Villa/Basílica</option>
+                            <option value="lagunilla">Lagunilla</option>
+                            <option value="lazaro_cardenas">Lázaro Cárdenas</option>
+                            <option value="lindavista">Lindavista</option>
+                            <option value="lomas_estrella">Lomas Estrella</option>
+                            <option value="los_reyes">Los Reyes</option>
+                            <option value="martin_carrera">Martín Carrera</option>
+                            <option value="merced">Merced</option>
+                            <option value="mexicaltzingo">Mexicaltzingo</option>
+                            <option value="miguel_angel_de_quevedo">Miguel Ángel de Quevedo</option>
+                            <option value="mixcoac">Mixcoac</option>
+                            <option value="mixiuhca">Mixiuhca</option>
+                            <option value="moctezuma">Moctezuma</option>
+                            <option value="morelos">Morelos</option>
+                            <option value="misterios">Misterios</option>
+                            <option value="musquiz">Múzquiz</option>
+                            <option value="nativitas">Nativitas</option>
+                            <option value="nezahualcoyotl">Nezahualcóyotl</option>
+                            <option value="ninos_heroes">Niños Héroes</option>
+                            <option value="nopalera">Nopalera</option>
+                            <option value="normal">Normal</option>
+                            <option value="norte_45">Norte 45</option>
+                            <option value="observatorio">Observatorio</option>
+                            <option value="obrera">Obrera</option>
+                            <option value="oceania">Oceanía</option>
+                            <option value="olivos">Olivos</option>
+                            <option value="olimpica">Olímpica</option>
+                            <option value="pantitlan">Pantitlán</option>
+                            <option value="panteones">Panteones</option>
+                            <option value="parque_de_los_venados">Parque de los Venados</option>
+                            <option value="patriotismo">Patriotismo</option>
+                            <option value="penon_viejo">Peñón Viejo</option>
+                            <option value="periferico_oriente">Periférico Oriente</option>
+                            <option value="pino_suarez">Pino Suárez</option>
+                            <option value="polanco">Polanco</option>
+                            <option value="politecnico">Politécnico</option>
+                            <option value="popotla">Popotla</option>
+                            <option value="portales">Portales</option>
+                            <option value="potrero">Potrero</option>
+                            <option value="puebla">Puebla</option>
+                            <option value="refineria">Refinería</option>
+                            <option value="revolucion">Revolución</option>
+                            <option value="ricardo_flores_magon">Ricardo Flores Magón</option>
+                            <option value="rio_de_los_remedios">Río de los Remedios</option>
+                            <option value="romero_rubio">Romero Rubio</option>
+                            <option value="salto_del_agua">Salto del Agua</option>
+                            <option value="san_andres_tomatlan">San Andrés Tomatlán</option>
+                            <option value="san_antonio">San Antonio</option>
+                            <option value="san_antonio_abad">San Antonio Abad</option>
+                            <option value="san_cosme">San Cosme</option>
+                            <option value="san_joaquin">San Joaquín</option>
+                            <option value="san_juan_de_letran">San Juan de Letran</option>
+                            <option value="san_lazaro">San Lázaro</option>
+                            <option value="san_pedro_de_los_pinos">San Pedro de los Pinos</option>
+                            <option value="santa_anita">Santa Anita</option>
+                            <option value="santa_marta">Santa Marta</option>
+                            <option value="tacuba">Tacuba</option>
+                            <option value="tacubaya">Tacubaya</option>
+                            <option value="talisman">Talismán</option>
+                            <option value="tasquena">Tasqueña</option>
+                            <option value="tepalcates">Tepalcates</option>
+                            <option value="tepatitlan">Tepatitlán</option>
+                            <option value="tepenepantla">Tepenenpantla</option>
+                            <option value="tepetitlan">Tepetitlán</option>
+                            <option value="tepexpan">Tepexpan</option>
+                            <option value="tezonco">Tezonco</option>
+                            <option value="tezozomoc">Tezozómoc</option>
+                            <option value="tlatelolco">Tlatelolco</option>
+                            <option value="tlaltenco">Tlaltenco</option>
+                            <option value="tlahuac">Tláhuac</option>
+                            <option value="terminal_aerea">Terminal Aérea</option>
+                            <option value="uam_azcapotzalco">UAM-Azcapotzalco</option>
+                            <option value="uam_i">UAM-I</option>
+                            <option value="universidad">Universidad</option>
+                            <option value="valle_gomez">Valle Gómez</option>
+                            <option value="vallejo">Vallejo</option>
+                            <option value="velodromo">Velódromo</option>
+                            <option value="viaducto">Viaducto</option>
+                            <option value="villa_de_aragon">Villa de Aragón</option>
+                            <option value="villa_de_cortes">Villa de Cortés</option>
+                            <option value="viveros">Viveros/Derechos Humanos</option>
+                            <option value="xola">Xola</option>
+                            <option value="zaragoza">Zaragoza</option>
+                            <option value="zocalo">Zócalo/Tenochtitlan</option>
+                            <option value="zapata">Zapata</option>
+                            <option value="zapotitlan">Zapotitlán</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group"> 
+                        <label>Fecha</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <label for="lluvia">¿Está lloviendo?</label>
+                            <input type="checkbox" id="lluvia" name="lluvia" value="true">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="boton-calcular">
+                        Calcular
+                    </button>
+
+                    <div class="resultados">
+                        <p class="leyenda">Se esperan <span class="valor">──────</span> personas</p>
+                        <p class="leyenda">Se recaudarán <span class="valor">$──────</span> pesos</p>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <script>
+        function obtenerFecha() {
+            const ahora = new Date();
+            const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+            return ahora.toLocaleDateString('es-MX', opciones);
+        }
+
+        function actualizarHora() {
+            const ahora = new Date();
+            const hora = ahora.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById("hora").textContent = hora;
+        }
+
+        document.getElementById("fecha").textContent = obtenerFecha();
+
+        setInterval(actualizarHora, 1000);
+        actualizarHora(); 
+    </script>
+</body>
+</html>
